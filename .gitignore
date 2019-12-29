@@ -1,0 +1,4 @@
+.env
+token.*
+uploads
+node_modules
