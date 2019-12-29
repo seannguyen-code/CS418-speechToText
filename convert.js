@@ -5,11 +5,11 @@ class Convert {
     constructor() {}
 }
 
-Convert.serviceRegion = 'southeastasia'
-Convert.subscriptionKey = '25c95fece70e4de7a595b0d181716e3c'
+Convert.serviceRegion = ''
+Convert.subscriptionKey = ''
 
 Convert.speechToText = function(filename, language = 'en-US') {
-    const filePath = './audio/' + filename
+    const filePath = '' // add file path
     const pushStream = sdk.AudioInputStream.createPushStream()
 
     fs.createReadStream(filePath)
@@ -29,15 +29,16 @@ Convert.speechToText = function(filename, language = 'en-US') {
 
     recognizer.startContinuousRecognitionAsync()
 
-    return new Promise((resolve, reject) => {
+    return new Promise((rel, rej) => {
         let result = []
 
-        recognizer.recognized = (r, event) => {
+        recognizer.recognized = (reg, event) => {
             result.push(JSON.parse(event.privResult.privJson))
         }
         
         recognizer.sessionStopped = () => {
             resolve(result)
+            fs.unlinkSync(filePath)
         }
      
     })
