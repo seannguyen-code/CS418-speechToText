@@ -1,12 +1,13 @@
 const fs = require('fs')
 const sdk = require('microsoft-cognitiveservices-speech-sdk')
+const config = require('./config')
 
 class Convert {
     constructor() {}
 }
 
-Convert.serviceRegion = 'southeastasia'
-Convert.subscriptionKey = '25c95fece70e4de7a595b0d181716e3c'
+Convert.serviceRegion = config.region
+Convert.subscriptionKey = config.keys
 
 Convert.speechToText = function(filename, language = 'en-US') {
     const filePath = './audio/' + filename
