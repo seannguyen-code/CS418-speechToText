@@ -35,11 +35,13 @@ Convert.speechToText = function(filename, language = 'en-US') {
         recognizer.recognized = (r, event) => {
             result.push(JSON.parse(event.privResult.privJson))
         }
-
+        
         recognizer.sessionStopped = () => {
             resolve(result)
         }
+     
     })
+    
 }
 
 module.exports = Convert
