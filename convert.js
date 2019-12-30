@@ -7,7 +7,7 @@ class Convert {
 }
 
 Convert.serviceRegion = config.region
-Convert.subscriptionKey = config.keys
+Convert.subscriptionKey = config.key
 
 Convert.speechToText = function(filename, language = 'en-US') {
     const filePath = './audio/' + filename

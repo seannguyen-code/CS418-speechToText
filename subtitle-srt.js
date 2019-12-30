@@ -1,29 +1,32 @@
 const fs = require('fs')
-const crypto = require('crypto')
 
 
-class Subtitle {
+class SubtitleSRT {
   constructor() {}
 }
 
-Subtitle.write = function(subtitle) {
-  const fileName = crypto.randomBytes(16).toString("hex") + ".vtt"
+SubtitleSRT.write = function(subtitle) {
+  const fileName = "subtitle.srt"
   const filePath = './audio/' + fileName
   const stream = fs.createWriteStream(filePath)
   
   return new Promise((resolve, reject) => {
     stream.once('open', function() {
       let duration = 0
-      stream.write('WEBVTT')
+      let id = 0
+
       subtitle.forEach(sub => {
+        id += 1
         let startTime = duration
         duration = duration + sub.Duration
-  
+
         if(sub.DisplayText) {
-          stream.write('\n\n')
-          stream.write(timeConvert(startTime) + " --> " + timeConvert(duration))
+          stream.write(String(id))
+          stream.write('\n')
+          stream.write( (timeConvert(startTime)).replace(".",",")  + " --> " + (timeConvert(duration)).replace(".",",") )
           stream.write('\n')
           stream.write(sub.DisplayText)
+          stream.write('\n\n')
         }
       })
       stream.close()
@@ -45,4 +48,4 @@ function timeConvert(time) {
   return `${hours}:${minutes}:${seconds}`
 }
 
-module.exports = Subtitle
+module.exports = SubtitleSRT
