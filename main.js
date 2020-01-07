@@ -9,18 +9,20 @@ const language = process.argv[4]
 function main() {
 convert.speechToText(filename, language).then(result => {
 
-    //console.log(result)
+    console.log(result)
 try {
-    if (typeSubtitle === 'srt') {
+    if (typeSubtitle == 'srt') {
        subtitlesrt.write(result)
     }
-    if (typeSubtitle === 'vtt') {
+    if (typeSubtitle == 'vtt') {
        subtitlevtt.write(result)
     }
-    else throw console.error("Subtitle Type NOT FOUND");
+    else if (typeSubtitle !== 'srt' || typeSubtitle !== 'vtt') 
+    throw console.error("Subtitle Type NOT FOUND");
     }
 catch(e) {console.log(e)}  
-})
+}
+)
 }
 
 main()
