@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Convert WAV sound file to subtiles</h1>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select file to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload"> 
+        <input type="submit" value="Upload File" name="submit" id="convertProcess"> <br>
+    </form>
+    
+    <a id="s1" href="./audio/subtitle.srt" download="subtitle.srt">Please wait...</a> <br>
+    <a id="s2" href="./audio/subtitle.vtt" download="subtitle.vtt">Download VTT subtitle</a>
+    
+    <script  type="module" src="main.js"></script>
+</body>
+</html>

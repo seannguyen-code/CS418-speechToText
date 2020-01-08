@@ -1,4 +1,5 @@
 node_modules
 config.js
 test.js
-audio/
+audio/subtitle.vtt
+audio/subtitle.srt
